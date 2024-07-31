@@ -1,0 +1,50 @@
+[
+    {
+        "__v": 6,
+        "_id": "647d6b785dee0aa680afbf35",
+        "createdAt": "2023-06-05T04:58:32.539Z",
+        "productCategory": "",
+        "productDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "productImages": [
+            "https://educatebharatbackendbucket.s3.ap-south-1.amazonaws.com/1.jpg"
+        ],
+        "productName": "product 1",
+        "productPrice": "1000",
+        "productRating": "4.5",
+        "productReviews": [],
+        "productStock": "INSTOCK",
+        "updatedAt": "2023-06-16T09:34:43.869Z"
+    },
+    {
+        "__v": 6,
+        "_id": "647d6b965dee0aa680afbf39",
+        "createdAt": "2023-06-05T04:59:02.466Z",
+        "productCategory": "",
+        "productDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "productImages": [
+            "https://educatebharatbackendbucket.s3.ap-south-1.amazonaws.com/JEE%20NEET%20CHE%201.jpg"
+        ],
+        "productName": "product 2",
+        "productPrice": "1000",
+        "productRating": "4.5",
+        "productReviews": [],
+        "productStock": "INSTOCK",
+        "updatedAt": "2023-06-21T09:54:03.431Z"
+    },
+    {
+        "__v": 4,
+        "_id": "6483235d1ac20f6bb1b6f3f9",
+        "createdAt": "2023-06-09T13:04:29.510Z",
+        "productCategory": "",
+        "productDescription": "You can use the Permissions tab to manage access permissions and object ownership. In Amazon S3, buckets and objects are private by default. You must explicitly grant permissions for your buckets and the objects in them.",
+        "productImages": [
+            "https://educatebharatbackendbucket.s3.ap-south-1.amazonaws.com/WhatsApp%20Image%202023-06-21%20at%201.00.47%20PM.jpeg"
+        ],
+        "productName": "product 3",
+        "productPrice": "1000",
+        "productRating": "4.5",
+        "productReviews": [],
+        "productStock": "INSTOCK",
+        "updatedAt": "2023-06-21T09:57:25.315Z"
+    }
+]
