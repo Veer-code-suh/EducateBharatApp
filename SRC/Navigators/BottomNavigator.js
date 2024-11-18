@@ -2,16 +2,16 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeNavigator from './HomeNavigator';
-import { Dimensions } from 'react-native';
 import Octicons from 'react-native-vector-icons/Octicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
-import StorePage from '../Pages/InnerPages/StorePage';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { COLOR } from '../Constants';
-import MyCourses from '../Pages/InnerPages/MyCourses';
-import Settings from '../Pages/Profile/Settings';
-
+import SettingsScreen from '../Pages/SettingScreens/SettingsScreen';
+import StoreScreen from '../Pages/StoreScreens/StoreScreen';
+import AllCoursesScreen from '../Pages/CourseScreens/AllCoursesScreen';
+import SettingsNavigator from './SettingsNavigator';
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -22,6 +22,7 @@ const BottomNavigator = () => {
                 tabBarStyle: {
                     position: 'absolute',
                     height: 50,
+                    borderColor: 'white'
                 },
                 tabBarShowLabel: false,
                 headerShown: false,
@@ -30,57 +31,65 @@ const BottomNavigator = () => {
                 options={{
                     tabBarIcon: ({ focused, color, size }) =>
                     (
-                        <View style={styles.iconContainer}>
-                            <Octicons name="home" size={25} color={focused ? COLOR.col2 : 'grey'} />
+                        <View style={focused ? styles.iconContainerF : styles.iconContainer}>
+                            <Octicons name="home" size={20} color={focused ? 'white' : COLOR.col1} />
                         </View>
                     )
                 }}
             />
-            <Tab.Screen name="StorePage" component={StorePage}
+            <Tab.Screen name="CourseScreen" component={AllCoursesScreen}
                 options={{
                     tabBarIcon: ({ focused, color, size }) =>
                     (
 
-                        <View style={styles.iconContainer}>
-                            <AntDesign name="book" size={25} color={focused ? COLOR.col2 : 'grey'} />
+                        <View style={focused ? styles.iconContainerF : styles.iconContainer}>
+                            <MaterialCommunityIcons name="table-of-contents" size={25} color={focused ? 'white' : COLOR.col1} />
                         </View>
 
                     )
                 }}
             />
 
-            <Tab.Screen name="Settings" component={Settings}
+            <Tab.Screen name="StoreScreen" component={StoreScreen}
                 options={{
                     tabBarIcon: ({ focused, color, size }) =>
                     (
 
-                        <View style={styles.iconContainer}>
+                        <View style={focused ? styles.iconContainerF : styles.iconContainer}>
+                            <AntDesign name="book" size={25} color={focused ? 'white' : COLOR.col1} />
+                        </View>
+
+                    )
+                }}
+            />
+
+            <Tab.Screen name="SettingsNavigator" component={SettingsNavigator}
+                options={{
+                    tabBarIcon: ({ focused, color, size }) =>
+                    (
+
+                        <View style={focused ? styles.iconContainerF : styles.iconContainer}>
                             {/* three dot */}
-                            <Feather name="user" size={25} color={focused ? COLOR.col2 : 'grey'} />
+                            <Feather name="user" size={25} color={focused ? 'white' : COLOR.col1} />
                         </View>
 
                     )
                 }}
             />
         </Tab.Navigator>
-
-
     )
 }
 
 export default BottomNavigator
 
 const styles = StyleSheet.create({
-    iconContainer: {
+    iconContainerF: {
+        backgroundColor: COLOR.col6,
+        padding: 10,
+        borderRadius: 50,
+        aspectRatio: 1,
         display: 'flex',
         alignItems: 'center',
-        height: '100%',
-        justifyContent: 'space-evenly',
-        width: Dimensions.get('window').width / 5 - 10,
-    },
-    iconText: {
-        fontSize: 8,
-        color: 'black',
-        position: 'relative'
-    },
+        justifyContent: 'center'
+    }
 })

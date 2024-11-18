@@ -1,4 +1,4 @@
-package com.educatebaharatapp2
+package com.educatebharat
 
 import android.app.Application
 import com.facebook.react.PackageList

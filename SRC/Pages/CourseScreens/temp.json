@@ -1,0 +1,473 @@
+{
+    "__v": 98,
+    "_id": "6482fe48bd8f1982fd69a066",
+    "courseDescription": "NEET COURSE (1499Rs ONLY)",
+    "courseImage": "https://educatebharatbackendbucket.s3.ap-south-1.amazonaws.com/IMG_20240806_013533.jpg",
+    "courseName": "NEET COURSE (1499Rs ONLY)",
+    "coursePrice": "1499",
+    "coursePriceCurrency": "INR",
+    "courseQuizzes": [
+        {
+            "_id": "64831ec81ac20f6bb1b6f397",
+            "access": "PAID",
+            "courseQuizName": "q1"
+        },
+        {
+            "_id": "64a03eb309e7b9adb55bc95a",
+            "access": "FREE",
+            "courseQuizName": "NEET FULL TEST 1"
+        },
+        {
+            "_id": "64a03eb809e7b9adb55bc95e",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 2"
+        },
+        {
+            "_id": "64a03ebf09e7b9adb55bc962",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 3"
+        },
+        {
+            "_id": "64a03ec409e7b9adb55bc966",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 4"
+        },
+        {
+            "_id": "64a03ec809e7b9adb55bc96a",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 5"
+        },
+        {
+            "_id": "64a03ecd09e7b9adb55bc96e",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 6"
+        },
+        {
+            "_id": "64a03ed309e7b9adb55bc972",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 7"
+        },
+        {
+            "_id": "64a03ed709e7b9adb55bc976",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 8"
+        },
+        {
+            "_id": "64a03edb09e7b9adb55bc97a",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 9"
+        },
+        {
+            "_id": "64a03edf09e7b9adb55bc97e",
+            "access": "PAID",
+            "courseQuizName": "NEET FULL TEST 10"
+        },
+        {
+            "_id": "64a6809c39e6ff7c3b1fb35b",
+            "access": "PAID",
+            "courseQuizName": "S-Block Element MOCK TEST"
+        },
+        {
+            "_id": "64a680b239e6ff7c3b1fb35f",
+            "access": "PAID",
+            "courseQuizName": "Amine MOCK TEST"
+        },
+        {
+            "_id": "64a680c839e6ff7c3b1fb363",
+            "access": "PAID",
+            "courseQuizName": "Biomolecule MOCK TEST"
+        },
+        {
+            "_id": "64a680e339e6ff7c3b1fb367",
+            "access": "PAID",
+            "courseQuizName": "Chemical Bonding MOCK TEST"
+        },
+        {
+            "_id": "64a6810b39e6ff7c3b1fb36b",
+            "access": "PAID",
+            "courseQuizName": "Electrochemistry MOCK TEST"
+        },
+        {
+            "_id": "64a6813639e6ff7c3b1fb36f",
+            "access": "PAID",
+            "courseQuizName": "Thermodynamics MOCK TEST"
+        },
+        {
+            "_id": "64a6816139e6ff7c3b1fb373",
+            "access": "PAID",
+            "courseQuizName": "Surface Chemistry MOCK TEST"
+        },
+        {
+            "_id": "64a6818639e6ff7c3b1fb377",
+            "access": "PAID",
+            "courseQuizName": "Solid State MOCK TEST"
+        },
+        {
+            "_id": "64a681b439e6ff7c3b1fb37b",
+            "access": "PAID",
+            "courseQuizName": "D & F Block MOCK TEST"
+        },
+        {
+            "_id": "64a681cc39e6ff7c3b1fb37f",
+            "access": "PAID",
+            "courseQuizName": "Hydrocarbon MOCK TEST"
+        },
+        {
+            "_id": "64a681e639e6ff7c3b1fb383",
+            "access": "PAID",
+            "courseQuizName": "P Block MOCK TEST"
+        },
+        {
+            "_id": "64a6820a39e6ff7c3b1fb387",
+            "access": "PAID",
+            "courseQuizName": "Periodic Table MOCK TEST"
+        },
+        {
+            "_id": "64a6824339e6ff7c3b1fb38b",
+            "access": "PAID",
+            "courseQuizName": "Haloalkane & Haloarene MOCK TEST"
+        },
+        {
+            "_id": "64a6827a39e6ff7c3b1fb38f",
+            "access": "PAID",
+            "courseQuizName": "Coordination Compound MOCK TEST"
+        },
+        {
+            "_id": "64a682aa39e6ff7c3b1fb393",
+            "access": "PAID",
+            "courseQuizName": "Alcohol, Phenol, & Ether MOCK TEST"
+        },
+        {
+            "_id": "64a682ee39e6ff7c3b1fb397",
+            "access": "PAID",
+            "courseQuizName": "General Organic Chemistry MOCK TEST"
+        },
+        {
+            "_id": "64a70ccf1e87051e5fca9f26",
+            "access": "FREE",
+            "courseQuizName": "MINERAL NUTRITION Mock Test"
+        },
+        {
+            "_id": "64a71e5c095ab307c0ad87e7",
+            "access": "PAID",
+            "courseQuizName": "CELL: THE UNIT OF LIFE Mock Test   "
+        },
+        {
+            "_id": "64a71f0b095ab307c0ad87f9",
+            "access": "PAID",
+            "courseQuizName": "TRANSPORT IN PLANTS Mock Test"
+        },
+        {
+            "_id": "64a71f4a095ab307c0ad8805",
+            "access": "PAID",
+            "courseQuizName": "MICROBES IN HUMAN WELFARE Mock Test      "
+        },
+        {
+            "_id": "64a78e35aa51724c39cbeaa0",
+            "access": "PAID",
+            "courseQuizName": "THE LIVING WORLD Mock Test"
+        },
+        {
+            "_id": "64a78ea0aa51724c39cbeaa4",
+            "access": "PAID",
+            "courseQuizName": "BIOLOGICAL CLASSIFICATION Mock Test"
+        },
+        {
+            "_id": "64a78f02aa51724c39cbeaa8",
+            "access": "PAID",
+            "courseQuizName": "PLANT KINGDOM       Mock Test"
+        },
+        {
+            "_id": "64a78f24aa51724c39cbeaac",
+            "access": "PAID",
+            "courseQuizName": "ANIMAL KINGDOM         Mock Test"
+        },
+        {
+            "_id": "64a78f47aa51724c39cbeab0",
+            "access": "PAID",
+            "courseQuizName": "MORPHOLOGY OF FLOWERING PLANTS Mock Test"
+        },
+        {
+            "_id": "64a7905b03e1329b1cf6ca64",
+            "access": "PAID",
+            "courseQuizName": "ANATOMY OF FLOWERING PLANTS     Mock Test"
+        },
+        {
+            "_id": "64a7909503e1329b1cf6ca68",
+            "access": "PAID",
+            "courseQuizName": "STRUCTURAL ORGANISATION IN ANIMALS Mock Test"
+        },
+        {
+            "_id": "64a790c203e1329b1cf6ca6c",
+            "access": "PAID",
+            "courseQuizName": "BIOMOLECULES Mock Test"
+        },
+        {
+            "_id": "64a790ed03e1329b1cf6ca70",
+            "access": "PAID",
+            "courseQuizName": "CELL CYCLE AND CELL DIVISION Mock Test"
+        },
+        {
+            "_id": "64a7914403e1329b1cf6ca74",
+            "access": "PAID",
+            "courseQuizName": "PHOTOSYNTHESIS IN HIGHER PLANTS Mock Test"
+        },
+        {
+            "_id": "64a7916a03e1329b1cf6ca78",
+            "access": "PAID",
+            "courseQuizName": "RESPIRATION IN PLANTS Mock Test"
+        },
+        {
+            "_id": "64a7919103e1329b1cf6ca7c",
+            "access": "PAID",
+            "courseQuizName": "PLANT GROWTH AND DEVELOPMENT Mock Test"
+        },
+        {
+            "_id": "64a791ac03e1329b1cf6ca80",
+            "access": "PAID",
+            "courseQuizName": "DIGESTION AND ABSORPTION Mock Test"
+        },
+        {
+            "_id": "64a791d203e1329b1cf6ca84",
+            "access": "PAID",
+            "courseQuizName": "BREATHING AND EXCHANGE OF GASES Mock Test"
+        },
+        {
+            "_id": "64a791f203e1329b1cf6ca88",
+            "access": "PAID",
+            "courseQuizName": "BODY FLUIDS AND CIRCULATION Mock Test"
+        },
+        {
+            "_id": "64a7920f03e1329b1cf6ca8c",
+            "access": "PAID",
+            "courseQuizName": "EXCRETORY PRODUCTS AND THEIR ELIMINATION Mock Test"
+        },
+        {
+            "_id": "64a7922a03e1329b1cf6ca90",
+            "access": "PAID",
+            "courseQuizName": "LOCOMOTION AND MOVEMENT     Mock Test"
+        },
+        {
+            "_id": "64a792ae03e1329b1cf6ca9b",
+            "access": "PAID",
+            "courseQuizName": "CHEMICAL COORDINATION AND INTEGRATION Mock Test"
+        },
+        {
+            "_id": "64a792ca03e1329b1cf6ca9f",
+            "access": "PAID",
+            "courseQuizName": "NEURAL CONTROL AND COORDINATION       Mock Test"
+        },
+        {
+            "_id": "64a792e703e1329b1cf6caa3",
+            "access": "PAID",
+            "courseQuizName": "REPRODUCTION IN ORGANISMS Mock Test"
+        },
+        {
+            "_id": "64a7930403e1329b1cf6caa7",
+            "access": "PAID",
+            "courseQuizName": "SEXUAL REPRODUCTION IN FLOWERING PLANTS   "
+        },
+        {
+            "_id": "64a7932403e1329b1cf6caab",
+            "access": "PAID",
+            "courseQuizName": "HUMAN REPRODUCTION Mock Test"
+        },
+        {
+            "_id": "64a7935703e1329b1cf6caaf",
+            "access": "PAID",
+            "courseQuizName": "REPRODUCTIVE HEALTH Mock Test"
+        },
+        {
+            "_id": "64a793db03e1329b1cf6cab3",
+            "access": "PAID",
+            "courseQuizName": "PRINCIPLES OF INHERITANCE AND VARIATION Mock Test"
+        },
+        {
+            "_id": "64a793fb03e1329b1cf6cab7",
+            "access": "PAID",
+            "courseQuizName": "MOLECULAR BASIS OF INHERITANCE Mock Test"
+        },
+        {
+            "_id": "64a7943603e1329b1cf6cabb",
+            "access": "PAID",
+            "courseQuizName": "EVOLUTION Mock Test"
+        },
+        {
+            "_id": "64a7945703e1329b1cf6cabf",
+            "access": "PAID",
+            "courseQuizName": "HUMAN HEALTH AND DISEASE Mock Test"
+        },
+        {
+            "_id": "64a7955303e1329b1cf6cac3",
+            "access": "PAID",
+            "courseQuizName": "STRATEGIES FOR ENHANCEMENT IN FOOD PRODUCTION Mock Test"
+        },
+        {
+            "_id": "64a7957b03e1329b1cf6cac7",
+            "access": "PAID",
+            "courseQuizName": "BIOTECHNOLOGY PRINCIPLES AND PROCESSES    Mock Test"
+        },
+        {
+            "_id": "64a7959703e1329b1cf6cacb",
+            "access": "PAID",
+            "courseQuizName": "BIOTECHNOLOGY AND ITS APPLICATIONS Mock Test"
+        },
+        {
+            "_id": "64a795bc03e1329b1cf6cacf",
+            "access": "PAID",
+            "courseQuizName": "ORGANISMS AND POPULATIONS Mock Test"
+        },
+        {
+            "_id": "64a795ef03e1329b1cf6cad3",
+            "access": "PAID",
+            "courseQuizName": "ECOSYSTEM Mock Test"
+        },
+        {
+            "_id": "64a7960b03e1329b1cf6cad7",
+            "access": "PAID",
+            "courseQuizName": "BIODIVERSITY AND CONSERVATION Mock Test "
+        },
+        {
+            "_id": "64a7962603e1329b1cf6cadb",
+            "access": "PAID",
+            "courseQuizName": "ENVIRONMENTAL ISSUES Mock Test"
+        },
+        {
+            "_id": "64aa5ba7155ae2e93ded73d8",
+            "access": "PAID",
+            "courseQuizName": "EQUILLIBRIUM Mock Test"
+        },
+        {
+            "_id": "64aa5bbf155ae2e93ded73dc",
+            "access": "PAID",
+            "courseQuizName": "HYDROGEN Mock Test"
+        },
+        {
+            "_id": "64aa5bd1155ae2e93ded73e0",
+            "access": "PAID",
+            "courseQuizName": "SOLUTION Mock Test"
+        },
+        {
+            "_id": "64aa5c4ffd7e3cfdbcec9c84",
+            "access": "PAID",
+            "courseQuizName": "CHEMICAL KINETICS Mock Test "
+        },
+        {
+            "_id": "64aa5f6706ef9914b6c9b1e3",
+            "access": "FREE",
+            "courseQuizName": "ATOMS AND NUCLEI Mock Test"
+        },
+        {
+            "_id": "64aa5f7106ef9914b6c9b1e7",
+            "access": "PAID",
+            "courseQuizName": "CURRENT ELECTRICITY Mock Test"
+        },
+        {
+            "_id": "64aa5f7906ef9914b6c9b1eb",
+            "access": "PAID",
+            "courseQuizName": "DUAL NATURE OF LIGHT Mock Test"
+        },
+        {
+            "_id": "64aa5f8206ef9914b6c9b1ef",
+            "access": "PAID",
+            "courseQuizName": "ELECTROMAGNETIC INDUCTION Mock Test"
+        },
+        {
+            "_id": "64aa5f8a06ef9914b6c9b1f3",
+            "access": "PAID",
+            "courseQuizName": "ELECTRONIC DEVICES Mock Test"
+        },
+        {
+            "_id": "64aa5f9306ef9914b6c9b1f7",
+            "access": "PAID",
+            "courseQuizName": "ELECTROSTATICS Mock Test"
+        },
+        {
+            "_id": "64aa5f9a06ef9914b6c9b1fb",
+            "access": "PAID",
+            "courseQuizName": "KINEMATICS Mock Test"
+        },
+        {
+            "_id": "64aa5fa206ef9914b6c9b1ff",
+            "access": "PAID",
+            "courseQuizName": "KINETIC THEORY OF GASES Mock Test"
+        },
+        {
+            "_id": "64aa5fab06ef9914b6c9b203",
+            "access": "PAID",
+            "courseQuizName": "MAGNETIC EFFECTS OF CURRENT Mock Test"
+        },
+        {
+            "_id": "64aa5fb306ef9914b6c9b207",
+            "access": "PAID",
+            "courseQuizName": "MOTION OF SYSTEM OF MATTER Mock Test"
+        },
+        {
+            "_id": "64aa5fbc06ef9914b6c9b20b",
+            "access": "PAID",
+            "courseQuizName": "OSCILLATIONS Mock Test"
+        },
+        {
+            "_id": "64aa5fc406ef9914b6c9b20f",
+            "access": "PAID",
+            "courseQuizName": "PHYSICAL WORLD AND MAESUREMENT Mock Test"
+        },
+        {
+            "_id": "64aa5fcb06ef9914b6c9b213",
+            "access": "PAID",
+            "courseQuizName": "PROPERTIES OF BULK MATTER Mock Test"
+        },
+        {
+            "_id": "64aa5fd306ef9914b6c9b217",
+            "access": "PAID",
+            "courseQuizName": "THEMODYNAMICS Mock Test"
+        },
+        {
+            "_id": "64aa5fda06ef9914b6c9b21b",
+            "access": "PAID",
+            "courseQuizName": "WAVE OPTICS Mock Test"
+        },
+        {
+            "_id": "64aa5fe106ef9914b6c9b21f",
+            "access": "PAID",
+            "courseQuizName": "WAVES Mock Test"
+        },
+        {
+            "_id": "64aa5fe806ef9914b6c9b223",
+            "access": "PAID",
+            "courseQuizName": "WORK, ENERGY AND POWER Mock Test"
+        },
+        {
+            "_id": "6735e7e7730cd7cd439d6796",
+            "access": "FREE",
+            "courseQuizName": "Harshal Jain Test"
+        }
+    ],
+    "courseRating": "0",
+    "courseReviews": [],
+    "courseSubjects": [
+        {
+            "_id": "6485aa11a159bb2640991d8e",
+            "subjectName": "PHYSICS"
+        },
+        {
+            "_id": "6485aa5ea159bb2640991d93",
+            "subjectName": "CHEMISTRY"
+        },
+        {
+            "_id": "64a15af7bfd609226fada423",
+            "subjectName": "BIOLOGY "
+        },
+        {
+            "_id": "64aec227d22a36e540316459",
+            "subjectName": "REVISION NOTES"
+        },
+        {
+            "_id": "64d3507426340d445b1f5611",
+            "subjectName": "Video Lectures"
+        }
+    ],
+    "createdAt": "2023-06-09T10:26:16.163Z",
+    "introVideo": "https://educatebharatbackendbucket.s3.ap-south-1.amazonaws.com/clock_time_lapse_02.mov",
+    "updatedAt": "2024-11-14T12:07:03.620Z"
+}

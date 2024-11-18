@@ -1,41 +1,34 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
-import { useRecoilState } from 'recoil';
-import { LoginState } from '../RecoilState/LoginState';
+import { useRecoilState } from 'recoil'
+import { LoginState } from '../RecoilState/LoginState'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { COLOR } from '../Constants';
+import { NavigationContainer } from '@react-navigation/native';
+import OnBoardingScreen from '../Pages/LoginNull/OnBoardingScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { NavigationContainer } from '@react-navigation/native'
-
-
-import OnBoardingScreen from '../Pages/OnBoardingScreen';
-import LoginScreen from '../Pages/LoginSignupForgotPassword/LoginScreen';
-import SignupScreen from '../Pages/LoginSignupForgotPassword/SignUpScreen';
-import OtpScreen from '../Pages/LoginSignupForgotPassword/OtpScreen';
-import AboutUs from '../Pages/InnerPages/AboutUs';
-import CoursePage from '../Pages/Course/CoursePage';
-import ChapterNotes from '../Pages/Course/ChapterNotes';
-import ChapterTests from '../Pages/Course/ChapterTests';
-import ChapterVideos from '../Pages/Course/ChapterVideos';
-import SpecificChapter from '../Pages/Course/SpecificChapter';
-import CourseChapters from '../Pages/Course/CourseChapters';
-import ProductPage from '../Pages/InnerPages/ProductPage';
-import VideoPlayer from '../Pages/Course/VideoPlayer';
-import PdfViewer from '../Pages/Course/PdfViewer';
-import QuestionPage from '../Pages/Quiz/QuestionPage';
-import SubmitQuiz from '../Pages/Quiz/SubmitQuiz';
-import Cart from '../Pages/InnerPages/Cart';
-import AllOrders from '../Pages/Orders/AllOrders';
-import OrderPage from '../Pages/Orders/OrderPage';
-import MyCourses from '../Pages/InnerPages/MyCourses';
-import TestScoresPage from '../Pages/Profile/TestScoresPage';
-import TestScoreSingle from '../Pages/Profile/TestScoreSingle';
+import LoginScreen from '../Pages/LoginFalse/LoginScreen';
+import SignupScreen from '../Pages/LoginFalse/SignupScreen';
+import CheckOtpSignup from '../Pages/LoginFalse/CheckOtpSignup';
+import ForgotPasswordScreen from '../Pages/LoginFalse/ForgotPasswordScreen';
+import CheckOtpForgotPassword from '../Pages/LoginFalse/CheckOtpForgotPassword';
 import BottomNavigator from './BottomNavigator';
-
+import CourseMainScreen from '../Pages/CourseScreens/CourseMainScreen';
+import CourseSubjectsScreen from '../Pages/CourseScreens/CourseSubjectsScreen';
+import CourseInsideSubjectScreen from '../Pages/CourseScreens/CourseInsideSubjectScreen';
+import CourseChapterScreen from '../Pages/CourseScreens/CourseChapterScreen';
+import CourseQuizScreen from '../Pages/CourseScreens/CourseQuizScreen';
+import VideoPlayerScreen from '../Pages/CourseScreens/VideoPlayerScreen';
+import PdfViewerScreen from '../Pages/CourseScreens/PdfViewerScreen';
+import ProductScreen from '../Pages/StoreScreens/ProductScreen';
+import CartScreen from '../Pages/StoreScreens/CartScreen';
+import CourseQuizQuestionScreen from '../Pages/CourseScreens/CourseQuizQuestionScreen';
+import CourseQuizSubmitScreen from '../Pages/CourseScreens/CourseQuizSubmitScreen';
 
 const MainNavigator = () => {
+
   const [islogin, setIsLogin] = useRecoilState(LoginState)
   const Stack = createNativeStackNavigator()
+
 
   const checkLogin = async () => {
     let loginToken = await AsyncStorage.getItem('token')
@@ -52,9 +45,7 @@ const MainNavigator = () => {
     checkLogin()
   }, [])
 
-
   return (
-
     <NavigationContainer>
       {
         islogin == null &&
@@ -66,25 +57,25 @@ const MainNavigator = () => {
 
       }
 
+
+
       {
         islogin == false &&
         <Stack.Navigator screenOptions={{
           headerShown: false
         }}>
-          <Stack.Screen name="loginscreen" component={LoginScreen} />
-          <Stack.Screen name="signupscreen" component={SignupScreen} />
-          <Stack.Screen name="checkotp" component={OtpScreen}
-            options={{
-              headerShown: true,
-              headerTitle: 'Verify OTP',
-              headerStyle: {
-                backgroundColor: COLOR.col3,
-              },
-              headerTintColor: COLOR.col1,
 
-            }}
-          />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="SignupScreen" component={SignupScreen} />
+          <Stack.Screen name="CheckOtpSignup" component={CheckOtpSignup} />
+
+
+          <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
+          <Stack.Screen name="CheckOtpForgotPassword" component={CheckOtpForgotPassword} />
+
+
         </Stack.Navigator>
+
       }
 
 
@@ -93,89 +84,24 @@ const MainNavigator = () => {
         <Stack.Navigator screenOptions={{
           headerShown: false
         }}>
-
-          <Stack.Screen name="bottomnavigator" component={BottomNavigator} />
-          <Stack.Screen name="aboutus" component={AboutUs} />
-          <Stack.Screen name="coursepage" component={CoursePage} />
-          <Stack.Screen name="chapternotes" component={ChapterNotes} />
-          <Stack.Screen name="chaptertests" component={ChapterTests} />
-          <Stack.Screen name="chaptervideos" component={ChapterVideos} />
-          <Stack.Screen name="chapterspecific" component={SpecificChapter} />
-          <Stack.Screen name="coursechapters" component={CourseChapters}
-            options={{
-              headerShown: true,
-              headerTitle: '',
-            }}
-          />
+          <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
+          <Stack.Screen name="CourseMainScreen" component={CourseMainScreen} />
+          <Stack.Screen name="CourseSubjectsScreen" component={CourseSubjectsScreen} />
+          <Stack.Screen name="CourseInsideSubjectScreen" component={CourseInsideSubjectScreen} />
+          <Stack.Screen name="CourseChapterScreen" component={CourseChapterScreen} />
+          <Stack.Screen name="VideoPlayerScreen" component={VideoPlayerScreen} />
+          <Stack.Screen name="PdfViewerScreen" component={PdfViewerScreen} />
 
 
-          <Stack.Screen name="productpage" component={ProductPage} />
-          <Stack.Screen name="videoplayer" component={VideoPlayer} />
-          <Stack.Screen name="pdfviewer" component={PdfViewer} />
-          <Stack.Screen name="questionpage" component={QuestionPage} />
-          <Stack.Screen name="submitquiz" component={SubmitQuiz} />
+          {/* QUIZ */}
+          <Stack.Screen name="CourseQuizScreen" component={CourseQuizScreen} />
+          <Stack.Screen name="CourseQuizQuestionScreen" component={CourseQuizQuestionScreen} />
+          <Stack.Screen name="CourseQuizSubmitScreen" component={CourseQuizSubmitScreen} />
 
+          {/* PRODUCT */}
+          <Stack.Screen name="ProductScreen" component={ProductScreen} />
+          <Stack.Screen name="CartScreen" component={CartScreen} />
 
-          <Stack.Screen name="cart" component={Cart}
-            options={{
-              headerShown: true,
-              headerTitle: 'My Cart',
-              headerStyle: {
-                backgroundColor: COLOR.col3,
-              },
-              headerTintColor: COLOR.col1,
-            }}
-          />
-
-
-
-          <Stack.Screen name="allorders" component={AllOrders}
-            options={{
-              headerShown: true,
-              headerTitle: 'My Orders',
-              headerStyle: {
-                backgroundColor: COLOR.col3,
-              },
-              headerTintColor: COLOR.col1,
-            }}
-          />
-          <Stack.Screen name="orderpage" component={OrderPage}
-            options={{
-              headerShown: true,
-              headerTitle: '',
-              headerStyle: {
-                backgroundColor: COLOR.col3,
-              },
-              headerTintColor: COLOR.col1,
-            }}
-          />
-          <Stack.Screen name="mycourses" component={MyCourses}
-          />
-
-
-
-          <Stack.Screen name="testscorespage" component={TestScoresPage}
-            options={{
-              headerShown: true,
-              headerTitle: 'Test Scores',
-              headerStyle: {
-                backgroundColor: COLOR.col3,
-              },
-              headerTintColor: COLOR.col1,
-            }}
-          />
-
-
-          <Stack.Screen name="testscoresingle" component={TestScoreSingle}
-            options={{
-              headerShown: true,
-              headerTitle: 'Test Scores',
-              headerStyle: {
-                backgroundColor: COLOR.col3,
-              },
-              headerTintColor: COLOR.col1,
-            }}
-          />
         </Stack.Navigator>
       }
     </NavigationContainer>
