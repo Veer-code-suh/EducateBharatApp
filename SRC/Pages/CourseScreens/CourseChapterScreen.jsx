@@ -102,9 +102,9 @@ const CourseChapterScreen = ({ route }) => {
         <View style={styles.textContainer}>
           <Text style={styles.previousText}>
             {course.courseName}{' '}
-            <AntDesign name="right" size={10} color={COLOR.col4} />{' '}
+            <AntDesign name="right" size={10} color={COLOR.col3} />{' '}
             {subject.subjectName}{' '}
-            <AntDesign name="right" size={10} color={COLOR.col4} />{' '}
+            <AntDesign name="right" size={10} color={COLOR.col3} />{' '}
             {chapter.chapterName}
           </Text>
         </View>
@@ -227,7 +227,7 @@ const CourseChapterScreen = ({ route }) => {
         </View>
       ) : (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator color={COLOR.col4} size={30}/>
+          <ActivityIndicator color={COLOR.col3} size={30}/>
           <Text style={styles.loadingText}>Loading chapter details...</Text>
         </View>
       )}
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.col6,
   },
   backbtn: {
-    color: COLOR.col4,
+    color: COLOR.col1,
     marginRight: 10,
   },
   textContainer: {
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   chapterTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: COLOR.col4,
+    color: COLOR.col3,
   },
   section: {
     marginVertical: 10,
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontSize: 16,
-    color: COLOR.col1,
+    color: COLOR.col2,
     flex: 1
   },
   sectionCard: {

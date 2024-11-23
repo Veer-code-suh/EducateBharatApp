@@ -43,8 +43,8 @@ const CourseQuizQuestionScreen = ({ route }) => {
             const data = await response.json();
             if (data.error) {
                 console.error("Error fetching quiz data:", data.error);
-            } 
-            else if(data.quizQuestions[`${quizType}QuizQNA`].length==0){
+            }
+            else if (data.quizQuestions[`${quizType}QuizQNA`].length == 0) {
                 Toast.show('0 Questions available')
                 navigation.goBack();
             }
@@ -128,9 +128,7 @@ const CourseQuizQuestionScreen = ({ route }) => {
         try {
             let token = await AsyncStorage.getItem("token");
 
-            // Make sure `QuizQNA` is defined properly, this line assumes that `QuizQNA` is the property name you want.
-            const totalQuestions = quizDataFull.quizQuestions?.length; // Assuming quizQuestions is the property that holds the questions
-
+       
             const response = await fetch(`${BACKEND_URL}/submitQuiz`, {
                 method: "POST",
                 headers: {
@@ -141,9 +139,9 @@ const CourseQuizQuestionScreen = ({ route }) => {
                     quizId: quizDataFull._id,
                     quizType: quizType,
                     score: score,
-                    total: total, // Corrected to use `totalQuestions`
-                    quizData: quizDataFull,
+                    total: total,
                     createdAt: new Date(),
+                    userAnswers: userAnswers
                 }),
             });
 
@@ -228,7 +226,7 @@ const CourseQuizQuestionScreen = ({ route }) => {
         return <Text>Loading...</Text>;
     }
 
-    const currentQuestion = quizDataFull?.quizQuestions.length>0 ? quizDataFull?.quizQuestions[currentQuestionIndex]:{};
+    const currentQuestion = quizDataFull?.quizQuestions.length > 0 ? quizDataFull?.quizQuestions[currentQuestionIndex] : {};
     // console.log(currentQuestion)
 
 
@@ -256,13 +254,13 @@ const CourseQuizQuestionScreen = ({ route }) => {
             <ScrollView style={styles.questionContainer}>
                 <View style={styles.navButtons}>
                     <TouchableOpacity style={styles.navButton} onPress={handlePrevious}>
-                        <AntDesign name='leftsquare' size={30} color={COLOR.col4} />
+                        <AntDesign name='leftsquare' size={30} color={COLOR.col3} />
                     </TouchableOpacity>
                     <Text style={styles.questionText}>
                         {currentQuestion.questionName}/{quizDataFull.quizQuestions.length}
                     </Text>
                     <TouchableOpacity style={styles.navButton} onPress={handleNext}>
-                        <AntDesign name='rightsquare' size={30} color={COLOR.col4} />
+                        <AntDesign name='rightsquare' size={30} color={COLOR.col3} />
 
                     </TouchableOpacity>
                 </View>
@@ -364,7 +362,7 @@ const styles = StyleSheet.create({
     questionText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: COLOR.col4
+        color: COLOR.col3
     },
     pdfContainer: {
         marginTop: 15,

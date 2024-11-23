@@ -210,7 +210,7 @@ export default CartScreen;
 
 const styles = StyleSheet.create({
     topBar: { flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#fff', elevation: 3 },
-    title: { flex: 1, fontSize: 14, fontWeight: 'bold', textAlign: 'center', color: COLOR.col4 },
+    title: { flex: 1, fontSize: 14, fontWeight: 'bold', textAlign: 'center', color: COLOR.col3 },
     clearCart: { color: COLOR.col1, fontWeight: '600', fontSize: 10, borderColor: COLOR.col1, borderWidth: 1, paddingHorizontal: 10, paddingVertical: 5 },
     cartContainer: { padding: 10, backgroundColor: '#fff' },
     cartItem: { flexDirection: 'row', backgroundColor: '#fff', marginBottom: 10, padding: 10, borderRadius: 5, elevation: 1 },
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     addressHeading: { fontSize: 16, marginTop: 20, fontWeight: '600' },
     addressText: { fontSize: 14, color: 'grey', marginTop: 5 },
     editAddress: { color: 'blue', fontSize: 14, marginTop: 5 },
-    buyNowButton: { backgroundColor: COLOR.col4, padding: 15, borderRadius: 10, alignItems: 'center', margin: 10 },
+    buyNowButton: { backgroundColor: COLOR.col3, padding: 15, borderRadius: 10, alignItems: 'center', margin: 10 },
     buyNowText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
     emptyCart: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' },
     emptyCartText: { fontSize: 18, color: COLOR.col1, marginTop: 10 },
@@ -264,12 +264,12 @@ const styles = StyleSheet.create({
     cellLeftTotal: {
         fontSize: 16,
         fontWeight: '400',
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     cellRightTotal: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     noAddress: {
         backgroundColor: '#f9f9f9', // Light gray background

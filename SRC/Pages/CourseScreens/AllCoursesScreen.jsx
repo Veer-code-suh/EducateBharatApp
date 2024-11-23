@@ -4,6 +4,7 @@ import { BACKEND_URL } from '@env';
 import { COLOR } from '../../Constants';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AllCoursesScreen = () => {
     const navigation = useNavigation();
@@ -12,45 +13,62 @@ const AllCoursesScreen = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [loading, setLoading] = useState(false);  // Loading state for fetch requests
 
-    // Fetch top 3 courses
-    const getThreeCourses = () => {
-        setLoading(true);  // Set loading to true whenever a fetch happens
-        fetch(`${BACKEND_URL}/getSomeCourses`, {
-            method: 'POST',
+    const getMyCourses = async () => {
+        const token = await AsyncStorage.getItem('token')
+        setLoading(true)
+        fetch(`${BACKEND_URL}/allCourses`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ limit: 3 }),
+
         })
-            .then((res) => res.json())
-            .then((data) => {
-                setCourses(data.courses);
-                setLoading(false);  // Set loading to false once data is fetched
+            .then(res => res.json())
+            .then(data => {
+                const sortedCourses = data.courses.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+                // console.log(data)
+                setCourses(sortedCourses)
+                setLoading(false)
             })
-            .catch(() => setLoading(false));  // Handle error case and stop loading
-    };
+            .catch(err => {
+                console.log(err)
+                setLoading(false)
+            })
+    }
+
+    useEffect(() => {
+        getMyCourses()
+    }, [])
 
     // Fetch search results based on the query
     const handleSearch = () => {
-        setLoading(true);  // Start loading before making the search request
-        fetch(`${BACKEND_URL}/searchCourses`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ query: searchQuery }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setCourses(data.courses);
-                setLoading(false);  // Set loading to false after receiving data
+
+
+        if (searchQuery.length > 0) {
+            setLoading(true);  // Start loading before making the search request
+            fetch(`${BACKEND_URL}/searchCourses`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query: searchQuery }),
             })
-            .catch(() => setLoading(false));  // Handle errors by stopping the loading state
+                .then((res) => res.json())
+                .then((data) => {
+                    const sortedCourses = data.courses.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    setCourses(sortedCourses)
+                    setLoading(false);  // Set loading to false after receiving data
+                })
+                .catch(() => setLoading(false));  // Handle errors by stopping the loading state
+
+        }
+        else {
+            getMyCourses();
+        }
     };
 
-    useEffect(() => {
-        getThreeCourses();  // Fetch the top 3 courses when the component mounts
-    }, []);
 
     const renderCourseItem = ({ item }) => (
         <TouchableOpacity style={styles.courseCard} onPress={() => handleCourseClick(item)}>
@@ -91,7 +109,7 @@ const AllCoursesScreen = () => {
 
             {/* Loading Indicator */}
             {loading ? (
-                <ActivityIndicator size="large" color={COLOR.col1} style={styles.loader} />
+                <ActivityIndicator size="large" color={COLOR.col2} style={styles.loader} />
             ) : (
                 <FlatList
                     data={courses}
@@ -100,6 +118,7 @@ const AllCoursesScreen = () => {
                     contentContainerStyle={styles.coursesContainer}
                 />
             )}
+
         </View>
     );
 };
@@ -116,11 +135,11 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     searchBar: {
         height: 40,
-        borderColor: COLOR.col1,
+        borderColor: COLOR.col2,
         borderWidth: 1,
         paddingHorizontal: 10,
         borderRadius: 8,
@@ -133,7 +152,7 @@ const styles = StyleSheet.create({
     },
     searchIcon: {
         fontSize: 20,
-        color: COLOR.col1,
+        color: COLOR.col2,
     },
     loader: {
         flex: 1,  // Center the loader in the screen
@@ -143,6 +162,8 @@ const styles = StyleSheet.create({
     coursesContainer: {
         paddingVertical: 10,
         gap: 10,
+        paddingBottom: 100
+
     },
     courseCard: {
         flex: 1,
@@ -175,13 +196,13 @@ const styles = StyleSheet.create({
         color: COLOR.col6,
         textTransform: 'capitalize'
     },
-    free:{
-        backgroundColor:COLOR.col1,
-        width:50,
-        textAlign:'center',
-        fontSize:12,
-        color:COLOR.col6,
-        marginVertical:5
+    free: {
+        backgroundColor: COLOR.col2,
+        width: 50,
+        textAlign: 'center',
+        fontSize: 12,
+        color: COLOR.col1,
+        marginVertical: 5
     },
     courseDescription: {
         fontSize: 10,

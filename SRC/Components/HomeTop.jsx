@@ -12,10 +12,10 @@ const HomeTop = ({ navigation }) => {
     }
     return (
         <View style={styles.topout}>
-            <Feather name="menu" size={20} color={COLOR.col4} 
+            <Feather name="menu" size={20} color={COLOR.col3} 
             onPress={openDrawer}
             />
-            <Feather name="shopping-cart" size={20} color={COLOR.col4}
+            <Feather name="shopping-cart" size={20} color={COLOR.col3}
             onPress={() => navigation.navigate("CartScreen")}
             />
         </View>

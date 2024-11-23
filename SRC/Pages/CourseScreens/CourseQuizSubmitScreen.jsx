@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     exitButton: {
         width: '80%',
         paddingVertical: 12,
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         borderRadius: 8,
         alignItems: 'center',
         elevation: 4,

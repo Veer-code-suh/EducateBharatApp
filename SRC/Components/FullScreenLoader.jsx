@@ -16,7 +16,7 @@ const FullScreenLoader = () => {
         alignItems:'center'
       }}
     >
-      <ActivityIndicator size="large" color={COLOR.col4} />
+      <ActivityIndicator size="large" color={COLOR.col3} />
     </View>
   )
 }

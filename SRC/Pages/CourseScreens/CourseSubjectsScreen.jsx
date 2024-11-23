@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: windowWidth,
     zIndex: 1,
-    backgroundColor: COLOR.col4
+    backgroundColor: COLOR.col3
   },
   backbtn: {
     color: COLOR.col1,
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     flex: 1,
     padding: 10,
-    color: COLOR.col4,
+    color: COLOR.col3,
   },
   tabContainer: {
     flexDirection: 'row',
@@ -263,13 +263,13 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   activeTab: {
-    borderColor: COLOR.col4,
+    borderColor: COLOR.col3,
   },
   tabText: {
-    color: COLOR.col1,
+    color: COLOR.col2,
   },
   activeTabText: {
-    color: COLOR.col4,
+    color: COLOR.col3,
     fontWeight: 'bold',
   },
   content: {
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   subjectName: {
-    backgroundColor: COLOR.col4,
+    backgroundColor: COLOR.col3,
     marginBottom: 10,
     padding: 10,
     flexDirection: 'row',
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   quizName: {
-    backgroundColor: COLOR.col4,
+    backgroundColor: COLOR.col3,
     marginBottom: 10,
     padding: 10,
     flexDirection: 'row',

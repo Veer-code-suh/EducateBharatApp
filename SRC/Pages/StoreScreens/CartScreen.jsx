@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 
 import { COLOR } from '../../Constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { BACKEND_URL,RAZORPAY_KEY_ID } from '@env'
+import { BACKEND_URL, RAZORPAY_KEY_ID } from '@env'
 import { Toast } from 'react-native-toast-notifications';
 import RazorpayCheckout from 'react-native-razorpay';
 
@@ -94,7 +94,7 @@ const CartScreen = () => {
     const buyNow = async () => {
         let token = await AsyncStorage.getItem('token')
 
-        if(address.AddressLine1 == "" || address.City == "" || address.State == "" || address.Pincode == ""){
+        if (address.AddressLine1 == "" || address.City == "" || address.State == "" || address.Pincode == "") {
             Toast.show("Please add an address")
             return
         }
@@ -126,12 +126,12 @@ const CartScreen = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log("data", data)
-                    if(data.error){
+                    if (data.error) {
                         Toast.show(data.error)
                         return
                     }
                     Toast.show("Order Placed")
-                    setCartData(data.userCart)                                                                                                        
+                    setCartData(data.userCart)
                     navigation.navigate("AllOrdersScreen")
                 })
                 .catch(err => {
@@ -144,10 +144,10 @@ const CartScreen = () => {
             Toast.show("Something went wrong")
             console.log(error)
         })
-  
 
-        
-        
+
+
+
     }
 
     // ADDRESS
@@ -208,16 +208,23 @@ const CartScreen = () => {
     const openAddressModal = () => setIsAddressModalVisible(true);
     const closeAddressModal = () => setIsAddressModalVisible(false);
 
+
+
+    const handleProductClick = (item) => {
+        // console.log(item)
+        navigation.navigate("ProductScreen", { product: item })
+
+    }
     const renderCartItem = (item, index) => (
-        <View key={index} style={styles.cartItem}>
+        <TouchableOpacity key={index} style={styles.cartItem} onPress={() => handleProductClick(item.fullproduct)}>
             <Image source={{ uri: item.fullproduct.productImages[0] }} style={styles.image} />
 
             <Text style={styles.quantity}>{item.quantity}</Text>
             <Text style={styles.name}>{item.fullproduct.productName}</Text>
             <Text style={styles.price}>Rs. {parseInt(item.price) * parseInt(item.quantity)}</Text>
 
-            <AntDesign name="delete" size={20} color={COLOR.col1} onPress={() => deleteCartItem(item.cartitemId)} />
-        </View>
+            <AntDesign name="delete" size={20} color={COLOR.col2} onPress={() => deleteCartItem(item.cartitemId)} />
+        </TouchableOpacity>
     );
     return (
         <View style={styles.fullPage}>
@@ -225,7 +232,7 @@ const CartScreen = () => {
                 <Ionicons
                     name="return-up-back-outline"
                     size={20}
-                    color={COLOR.col1}
+                    color={COLOR.col2}
                     onPress={() => navigation.goBack()}
                 />
                 <Text style={styles.title}>Your Cart</Text>
@@ -261,9 +268,9 @@ const CartScreen = () => {
                                 <Text style={styles.addressHeading}>Delivery Address:</Text>
                                 <Text style={styles.addressText}>
                                     {address.AddressLine1 && address.AddressLine1 + ','} {address.City && address.City + ','} {address.State && address.State + ','}  {address.Pincode}
-                                {'  '}
+                                    {'  '}
                                     <Text style={styles.editAddress}>Edit Address</Text>
-                                
+
 
                                 </Text>
 
@@ -284,7 +291,7 @@ const CartScreen = () => {
                 </ScrollView>
             ) : (
                 <View style={styles.emptyCart}>
-                    <Feather name="shopping-cart" size={80} color={COLOR.col1} />
+                    <Feather name="shopping-cart" size={80} color={COLOR.col2} />
                     <Text style={styles.emptyCartText}>Your cart is empty</Text>
                 </View>
             )}
@@ -300,7 +307,7 @@ const CartScreen = () => {
                         <ScrollView>
                             <Text style={styles.modalTitle}>Edit Address</Text>
 
-                            <Text style={styles.label}>Address Line 1<Text style={{color:'red'}}>*</Text></Text>
+                            <Text style={styles.label}>Address Line 1<Text style={{ color: 'red' }}>*</Text></Text>
                             <TextInput
                                 style={styles.input}
                                 placeholder="Enter Address Line 1"
@@ -314,7 +321,7 @@ const CartScreen = () => {
                                 value={address.AddressLine2}
                                 onChangeText={(text) => setAddress({ ...address, AddressLine2: text })}
                             />
-                            <Text style={styles.label}>City<Text style={{color:'red'}}>*</Text></Text>
+                            <Text style={styles.label}>City<Text style={{ color: 'red' }}>*</Text></Text>
                             <TextInput
                                 style={styles.input}
                                 placeholder="Enter City"
@@ -330,7 +337,7 @@ const CartScreen = () => {
                                 onChangeText={(text) => setAddress({ ...address, State: text })}
                             />
 
-                            <Text style={styles.label}>Pincode<Text style={{color:'red'}}>*</Text></Text>
+                            <Text style={styles.label}>Pincode<Text style={{ color: 'red' }}>*</Text></Text>
                             <TextInput
                                 style={styles.input}
                                 placeholder="Enter Pincode"
@@ -364,7 +371,7 @@ const styles = StyleSheet.create({
 
     },
     topBar: { flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#fff', elevation: 3 },
-    title: { flex: 1, fontSize: 14, fontWeight: 'bold', textAlign: 'center', color: COLOR.col4 },
+    title: { flex: 1, fontSize: 14, fontWeight: 'bold', textAlign: 'center', color: COLOR.col3 },
     myOrders: { color: COLOR.col1, fontWeight: '600', fontSize: 10, borderColor: COLOR.col1, borderWidth: 1, paddingHorizontal: 10, paddingVertical: 5 },
 
     // middle
@@ -372,11 +379,20 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 10
     },
+    emptyCart:{
+     
+        flex:1,
+        justifyContent:'center',
+       alignItems:'center'
+    },
+    emptyCartText:{
+        color:COLOR.col2
+    },
     cartItem: { flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: '#fff', marginBottom: 10 },
     image: { width: 30, height: 30, borderRadius: 5 },
     info: { flex: 1, paddingLeft: 10 },
     name: { fontWeight: '600', fontSize: 12, flex: 1 },
-    quantity: { color: COLOR.col4 },
+    quantity: { color: COLOR.col3 },
     price: { marginTop: 5, fontWeight: '600' },
 
     // price table
@@ -415,12 +431,12 @@ const styles = StyleSheet.create({
     cellLeftTotal: {
         fontSize: 16,
         fontWeight: '400',
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     cellRightTotal: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     addressHeading: { fontSize: 16, marginTop: 20, fontWeight: '600' },
     addressText: { fontSize: 14, color: 'grey', marginTop: 5 },
@@ -459,12 +475,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         textAlign: 'center',
     },
-    addressHeading: { fontSize: 12, marginTop: 20, fontWeight: '500', color:COLOR.col4 },
+    addressHeading: { fontSize: 12, marginTop: 20, fontWeight: '500', color: COLOR.col3 },
     addressText: { fontSize: 14, color: 'grey', marginTop: 5 },
-    editAddress: { color:COLOR.col4, fontSize: 10, marginTop: 5, textDecorationLine:'underline' },
+    editAddress: { color: COLOR.col3, fontSize: 10, marginTop: 5, textDecorationLine: 'underline' },
 
     // bottom
-    buyNowButton: { backgroundColor: COLOR.col4, padding: 10, borderRadius: 5, alignItems: 'center', marginTop: 20 },
+    buyNowButton: { backgroundColor: COLOR.col3, padding: 10, borderRadius: 5, alignItems: 'center', marginTop: 20 },
     buyNowText: { color: '#fff', fontSize: 12, fontWeight: 'bold' },
 
 
@@ -486,7 +502,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '400',
         marginBottom: 20,
-        color: COLOR.col4,
+        color: COLOR.col3,
 
     },
     label: {
@@ -520,7 +536,7 @@ const styles = StyleSheet.create({
     },
     saveButton: {
         padding: 10,
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         borderRadius: 5,
         flex: 1,
         marginLeft: 8,

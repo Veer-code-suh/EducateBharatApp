@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     },
     topBar: {
         paddingVertical:10,
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 10,
     left: 10,
-    backgroundColor:COLOR.col4,
+    backgroundColor:COLOR.col3,
     borderRadius:20
   },
   backbtn: {

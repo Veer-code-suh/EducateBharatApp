@@ -131,27 +131,31 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
-        color: '#333',
-        margin: 10,
+        color: COLOR.col2
     },
     input: {
         width: '80%',
         height: 40,
-        borderColor: '#ccc',
-        borderWidth: 1,
-        borderRadius: 5,
-        paddingLeft: 10,
-        marginVertical: 10,
+        borderColor: COLOR.col2,
+        color: COLOR.col2,
+        borderWidth: 2,
+        borderRadius: 25,
+        padding: 10,
+        marginVertical: 5,
+        paddingHorizontal: 20,
+        fontSize: 15
     },
     button: {
+        textAlignVertical: "center",
+        textAlign: "center",
         backgroundColor: COLOR.col2,
-        color: '#FFF',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 5,
-        textAlign: 'center',
+        color: COLOR.col1,
+        borderRadius: 20,
         marginTop: 10,
         width: '80%',
+        padding: 10,
+       
+    fontSize: 16,
     },
     forgotPasswordLink: {
         color: COLOR.col2,

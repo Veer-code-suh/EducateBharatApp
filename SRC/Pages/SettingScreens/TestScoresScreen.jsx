@@ -7,6 +7,7 @@ import { BACKEND_URL } from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Pdf from 'react-native-pdf';
 import Entypo from 'react-native-vector-icons/Entypo'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 const TestScoresScreen = ({ route }) => {
   const { quiz } = route.params; // Get quizId from route params
   const [quizData, setQuizData] = useState(null); // State to store quiz data
@@ -19,6 +20,7 @@ const TestScoresScreen = ({ route }) => {
   useEffect(() => {
     // Function to fetch quiz data using the quizId
     const fetchQuizData = async () => {
+      setError(null);
       const token = await AsyncStorage.getItem('token');
       setLoading(true);
       fetch(`${BACKEND_URL}/getquizbyid?quizId=${quiz.quizId}`, {
@@ -30,8 +32,26 @@ const TestScoresScreen = ({ route }) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          const updatedQuizQuestions = data.quizData.quizQuestions.map(question => {
+            // console.log('question ', data.userAnswers)
+            const userAnswer = data.userAnswers[question._id] || null; // Match user's answer by question ID
+            return {
+              ...question,
+              userAnswer // Add userAnswer to each question object
+            };
+          });
 
-          setQuizData(data);
+          // Update quizData with the modified quizQuestions
+          const updatedQuizData = {
+            ...data.quizData,
+            quizQuestions: updatedQuizQuestions
+          };
+
+          // Optional: Remove userAnswers if no longer needed
+          delete updatedQuizData.userAnswers;
+
+          // Set the modified quizData to state
+          setQuizData({ ...data, quizData: updatedQuizData });
           setLoading(false);
         })
         .catch((err) => {
@@ -48,21 +68,50 @@ const TestScoresScreen = ({ route }) => {
 
   const renderQuestion = ({ item, index }) => (
     <View style={styles.questionCard}>
+      {
+        item.userAnswer == item.questionAnswer ?
+          <AntDesign name='checkcircle' size={30} color={'green'} style={styles.correct} /> :
+          <Entypo name='circle-with-cross' size={30} color={'red'} style={styles.incorrect} />
+      }
       <Text style={styles.questionTitle}>
         {index + 1}. {item.questionName} ({item.questionType})
       </Text>
-      <Text style={styles.questionSubject}>Subject: {item.questionSubject}</Text>
-      <Text style={styles.questionMarks}>Marks: {item.questionMarks}</Text>
-      <Text style={styles.questionMarks}>Negative Marks: {item.questionNegativeMarks}</Text>
-
-      {item.questionPdf && (
-        <View style={[styles.pdfContainer, { height: height * 0.5 }]}>
-          <Pdf
-            trustAllCerts={false}
-            source={{ uri: item.questionPdf, cache: true }}
-            style={{ flex: 1 }}
-          />
+      <View style={styles.table}>
+        <View style={styles.row}>
+          <Text style={styles.cellLabel}>Correct Answer:</Text>
+          <Text style={styles.cellValue}>{item.questionAnswer}</Text>
         </View>
+        <View style={styles.row}>
+          <Text style={styles.cellLabel}>Your Answer:</Text>
+          <Text style={styles.cellValue}>{item.userAnswer}</Text>
+        </View>
+
+      </View>
+      <View style={styles.table}>
+        <View style={styles.row}>
+          <Text style={styles.cellLabel}>Subject:</Text>
+          <Text style={styles.cellValue}>{item.questionSubject}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.cellLabel}>Marks:</Text>
+          <Text style={styles.cellValue}>{item.questionMarks}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.cellLabel}>Negative Marks:</Text>
+          <Text style={styles.cellValue}>{item.questionNegativeMarks}</Text>
+        </View>
+      </View>
+      {item.questionPdf && (
+
+        <TouchableOpacity style={styles.questionPdfrow}
+          onPress={() => {
+            navigation.navigate('PdfViewerScreen', { pdfUrl: item.questionPdf });
+          }}
+        >
+          <Text style={styles.questionPdfText}>Show question{' '}</Text>
+          <Entypo name="eye" size={20} color={COLOR.col1}
+          />
+        </TouchableOpacity>
       )}
     </View>
   );
@@ -77,7 +126,7 @@ const TestScoresScreen = ({ route }) => {
       </View>
 
       {loading ? (
-        <ActivityIndicator size="large" color={COLOR.col4} style={styles.loader} />
+        <ActivityIndicator size="large" color={COLOR.col3} style={styles.loader} />
       ) : error ? (
         <Text style={styles.errorText}>{error}</Text> // Display error message if fetch fails
       ) : (
@@ -88,7 +137,7 @@ const TestScoresScreen = ({ route }) => {
               <View style={styles.table}>
                 <View style={styles.row}>
                   <Text style={styles.cellLabel}>Quiz Name:</Text>
-                  <Text style={styles.cellValue}>{quizData[`${quizData.quizType}QuizName`]}</Text>
+                  <Text style={styles.cellValue}>{quizData.quizData.quizName}</Text>
                 </View>
                 <View style={styles.row}>
                   <Text style={styles.cellLabel}>Quiz Type:</Text>
@@ -96,12 +145,12 @@ const TestScoresScreen = ({ route }) => {
                 </View>
                 <View style={styles.row}>
                   <Text style={styles.cellLabel}>Access:</Text>
-                  <Text style={styles.cellValue}>{quizData.access}</Text>
+                  <Text style={styles.cellValue}>{quizData.quizData.access}</Text>
                 </View>
                 <View style={styles.row}>
                   <Text style={styles.cellLabel}>Time Limit:</Text>
                   <Text style={styles.cellValue}>
-                    {Math.floor(quizData.timeLimit / 60000)} min
+                    {Math.floor(quizData.quizData.timeLimit / 60000)} min
                   </Text>
                 </View>
                 <View style={styles.row}>
@@ -110,29 +159,35 @@ const TestScoresScreen = ({ route }) => {
                     {quizData.score !== null ? `${quizData.score}/${quizData.total}` : "Not Attempted"}
                   </Text>
                 </View>
-                <TouchableOpacity style={styles.row}
+                {quizData.quizData.afterSubmissionPdf ? (<TouchableOpacity style={styles.row}
                   onPress={() => {
-                    navigation.navigate('PdfViewerScreen', { pdfUrl: quizData.afterSubmissionPdf });
+                    navigation.navigate('PdfViewerScreen', { pdfUrl: quizData.quizData.afterSubmissionPdf });
                   }}
                 >
                   <Text style={styles.cellLabel}>Quiz Pdf:</Text>
-                  {quizData.afterSubmissionPdf && (
-
-                    <View style={styles.cellValue}>
-                      <Entypo name="eye" size={20} color={COLOR.col1} 
-
-                      />
-                    </View>
 
 
-                  )}
+                  <View style={styles.cellValue}>
+                    <Entypo name="eye" size={20} color={COLOR.col1}
+
+                    />
+                  </View>
+
+
                 </TouchableOpacity>
+                ) :
+                  <View style={styles.row}>
+                    <Text style={styles.cellLabel}>Quiz Pdf:</Text>
+                    <Text style={styles.cellValue}>Not Provided</Text>
+                  </View>
+                }
+
               </View>
 
-              
+
             </View>
           }
-          data={quizData.quizQuestions}
+          data={quizData.quizData.quizQuestions}
           renderItem={renderQuestion}
           keyExtractor={(item) => item._id}
           ListFooterComponent={
@@ -148,7 +203,7 @@ const TestScoresScreen = ({ route }) => {
 const styles = StyleSheet.create({
   topBar: {
     paddingVertical: 10,
-    backgroundColor: COLOR.col4,
+    backgroundColor: COLOR.col3,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
@@ -200,7 +255,7 @@ const styles = StyleSheet.create({
   },
 
   pdfButton: {
-    backgroundColor: COLOR.col4,
+    backgroundColor: COLOR.col3,
     paddingVertical: 5,
     paddingHorizontal: 20,
     borderRadius: 5,
@@ -218,29 +273,53 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10,
     borderWidth: 1,
-    borderColor: COLOR.col4,
+    borderColor: COLOR.col3,
     borderRadius: 8,
     backgroundColor: 'white',
+    position: 'relative'
+
+  },
+  correct: {
+    position: 'absolute',
+    right: 5,
+    top: 5
+  },
+  incorrect: {
+    position: 'absolute',
+
+    right: 5,
+    top: 5
   },
   questionTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: COLOR.col4,
+    color: COLOR.col3,
     marginBottom: 8,
   },
   questionSubject: {
     fontSize: 14,
-    color: COLOR.col1,
+    color: COLOR.col2,
     marginBottom: 4,
   },
   questionMarks: {
     fontSize: 14,
-    color: COLOR.col1,
+    color: COLOR.col2,
     marginBottom: 8,
   },
   footer: {
     paddingBottom: 100, // Additional padding for the footer
   },
+  questionPdfrow: {
+    backgroundColor: COLOR.col3,
+    justifyContent: 'space-between',
+    padding: 5,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    borderRadius: 5
+  },
+  questionPdfText: {
+    color: 'white'
+  }
 });
 
 export default TestScoresScreen;

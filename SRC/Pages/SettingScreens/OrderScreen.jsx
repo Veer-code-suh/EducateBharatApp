@@ -223,10 +223,10 @@ const styles = StyleSheet.create({
     image: { width: 30, height: 30, borderRadius: 5 },
     info: { flex: 1, paddingLeft: 10 },
     name: { fontWeight: '600', fontSize: 12, flex: 1 },
-    quantity: { color: COLOR.col4 },
+    quantity: { color: COLOR.col3 },
     price: { marginTop: 5, fontWeight: '600' },
     cancelButton: {
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         padding: 12,
         borderRadius: 8,
         alignItems: 'center',

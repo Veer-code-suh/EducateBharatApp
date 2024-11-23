@@ -21,12 +21,12 @@ const HomeNavigator = () => {
                 {
                     headerShown: false,
                     drawerStyle: {
-                        backgroundColor: 'white',
+                        backgroundColor: COLOR.col3,
                         width: 240,
 
                     },
-                    drawerActiveBackgroundColor: COLOR.col2,
-                    drawerActiveTintColor: COLOR.col4,
+                    drawerActiveBackgroundColor: COLOR.col1,
+                    drawerActiveTintColor: COLOR.col3,
               
                 }
             }>

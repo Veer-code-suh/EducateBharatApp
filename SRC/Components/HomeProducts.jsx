@@ -34,7 +34,7 @@ const HomeProducts = () => {
 
   const handlePressItem = (item) => {
     console.log(item)
-    navigation.navigate('ProductSreen', { product: item });
+    navigation.navigate('ProductScreen', { product: item });
   };
 
   return (
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   head: {
     fontSize: 18,
     fontWeight: '300',
-    color: COLOR.col4,
+    color: COLOR.col2,
   },
   more: {
     fontSize: 12,

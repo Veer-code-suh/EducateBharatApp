@@ -136,7 +136,7 @@ const CourseInsideSubjectScreen = ({ route }) => {
         <View style={styles.textContainer}>
 
           <Text style={styles.previousText}>
-            {courseName} <AntDesign name="right" size={10} color={COLOR.col4} /> {selectedSubject.subjectName}
+            {courseName} <AntDesign name="right" size={10} color={COLOR.col1} /> {selectedSubject.subjectName}
           </Text>
         </View>
       </View>
@@ -161,7 +161,7 @@ const CourseInsideSubjectScreen = ({ route }) => {
       {
         loading ?
 
-          <ActivityIndicator color={COLOR.col4} size={20} />
+          <ActivityIndicator color={COLOR.col3} size={20} />
 
           :
           <ScrollView style={styles.content}>
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.col6,
   },
   backbtn: {
-    color: COLOR.col4,
+    color: COLOR.col1,
     marginRight: 10,
   },
   textContainer: {
@@ -227,20 +227,20 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     flexDirection: 'row',
-    backgroundColor: COLOR.col4,
+    backgroundColor: COLOR.col3,
   },
   tab: {
     flex: 1,
     paddingVertical: 10,
     alignItems: 'center',
     borderBottomWidth: 2,
-    borderColor: COLOR.col4,
+    borderColor: COLOR.col3,
   },
   activeTab: {
     borderColor: COLOR.col1,
   },
   tabText: {
-    color: COLOR.col3,
+    color: COLOR.col1,
   },
   activeTabText: {
     color: COLOR.col1,
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   quizItem: {
-    backgroundColor: COLOR.col4,
+    backgroundColor: COLOR.col3,
     marginBottom: 10,
     padding: 10,
     color: COLOR.col1,

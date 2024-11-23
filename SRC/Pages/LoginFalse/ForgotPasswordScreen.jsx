@@ -37,9 +37,9 @@ const ForgotPasswordScreen = ({ navigation }) => {
     }
     setLoading(true);
     // Mock password reset request
-  
-    navigation.navigate('CheckOtpForgotPassword', { phone, password: newPassword});
-    
+
+    navigation.navigate('CheckOtpForgotPassword', { phone, password: newPassword });
+
   };
 
   return (
@@ -97,29 +97,33 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     objectFit: "contain",
   },
-  title: {
-    fontSize: 24,
-    color: "#333",
-  },
-  input: {
-    width: "80%",
-    height: 40,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingLeft: 10,
-    marginVertical: 10,
-  },
-  button: {
-    backgroundColor: COLOR.col2,
-    color: "#FFF",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    textAlign: "center",
-    marginTop: 10,
-    width: "80%",
-  },
+   title: {
+        fontSize: 24,
+        color: COLOR.col2
+    },
+    input: {
+        width: '80%',
+        height: 40,
+        borderColor: COLOR.col2,
+        color: COLOR.col2,
+        borderWidth: 2,
+        borderRadius: 25,
+        padding: 10,
+        marginVertical: 5,
+        paddingHorizontal: 20,
+        fontSize: 15
+    },
+    button: {
+        textAlignVertical: "center",
+        textAlign: "center",
+        backgroundColor: COLOR.col2,
+        color: COLOR.col1,
+        borderRadius: 20,
+        marginTop: 10,
+        width: '80%',
+        padding: 10,
+        fontSize: 16,
+    },
   backToLogin: {
     color: COLOR.col2,
     marginTop: 10,

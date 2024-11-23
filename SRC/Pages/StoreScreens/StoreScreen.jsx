@@ -12,18 +12,19 @@ const StoreScreen = () => {
   const [loading, setLoading] = useState(false);  // Loading state for fetch requests
   const navigation = useNavigation();
   // Fetch top 3 products
-  const getThreeProducts = () => {
+  const getProducts = () => {
+
     setLoading(true);  // Set loading to true whenever a fetch happens
-    fetch(`${BACKEND_URL}/getSomeProducts`, {
-      method: 'POST',
+    fetch(`${BACKEND_URL}/getAllProducts`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ limit: 3 }),
+      }
     })
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.products);
+        const sortedProducts = data.products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setProducts(sortedProducts);
         setLoading(false);  // Set loading to false once data is fetched
       })
       .catch(() => setLoading(false));  // Handle error case and stop loading
@@ -31,24 +32,30 @@ const StoreScreen = () => {
 
   // Fetch search results based on the query
   const handleSearch = () => {
-    setLoading(true);  // Start loading before making the search request
-    fetch(`${BACKEND_URL}/searchStoreProducts`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query: searchQuery }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.products);
-        setLoading(false);  // Set loading to false after receiving data
+    if (searchQuery.length > 0) {
+      setLoading(true);  // Start loading before making the search request
+      fetch(`${BACKEND_URL}/searchStoreProducts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: searchQuery }),
       })
-      .catch(() => setLoading(false));  // Handle errors by stopping the loading state
+        .then((res) => res.json())
+        .then((data) => {
+          const sortedProducts = data.products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          setProducts(sortedProducts);
+          setLoading(false);  // Set loading to false after receiving data
+        })
+        .catch(() => setLoading(false));  // Handle errors by stopping the loading state
+    }
+    else {
+      getProducts();
+    }
   };
 
   useEffect(() => {
-    getThreeProducts();  // Fetch the top 3 products when the component mounts
+    getProducts();  // Fetch the top 3 products when the component mounts
   }, []);
 
   const renderProductItem = ({ item }) => (
@@ -75,7 +82,7 @@ const StoreScreen = () => {
     <View style={styles.container}>
       <View style={styles.headerSection}>
         <Text style={styles.header}>Store</Text>
-        <Feather name="shopping-cart" size={20} color={COLOR.col4}
+        <Feather name="shopping-cart" size={20} color={COLOR.col3}
           onPress={() => navigation.navigate("CartScreen")}
         />
       </View>
@@ -95,7 +102,7 @@ const StoreScreen = () => {
 
       {/* Loading Indicator */}
       {loading ? (
-        <ActivityIndicator size="large" color={COLOR.col1} style={styles.loader} />
+        <ActivityIndicator size="large" color={COLOR.col2} style={styles.loader} />
       ) : (
         <FlatList
           data={products}
@@ -104,6 +111,7 @@ const StoreScreen = () => {
           contentContainerStyle={styles.productsContainer}
         />
       )}
+
     </View>
   );
 };
@@ -116,20 +124,20 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: 'white',
   },
-  headerSection:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
+  headerSection: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 20,
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: COLOR.col4,
+    color: COLOR.col3,
   },
   searchBar: {
     height: 40,
-    borderColor: COLOR.col1,
+    borderColor: COLOR.col2,
     borderWidth: 1,
     paddingHorizontal: 10,
     borderRadius: 8,
@@ -142,7 +150,7 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     fontSize: 20,
-    color: COLOR.col1,
+    color: COLOR.col2,
   },
   loader: {
     flex: 1,  // Center the loader in the screen
@@ -152,6 +160,7 @@ const styles = StyleSheet.create({
   productsContainer: {
     paddingVertical: 10,
     gap: 20,
+    paddingBottom:100
   },
   productCard: {
     flex: 1,
@@ -172,7 +181,7 @@ const styles = StyleSheet.create({
   productTitle: {
     fontSize: 18,
     fontWeight: '400',
-    color: COLOR.col4,
+    color: COLOR.col3,
     textTransform: 'capitalize'
   },
   productPrice: {

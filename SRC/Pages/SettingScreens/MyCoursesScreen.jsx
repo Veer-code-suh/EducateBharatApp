@@ -64,7 +64,7 @@ const MyCoursesScreen = ({ navigation }) => {
             {/* Conditional Rendering */}
             {loading && (
                 <View style={styles.loader}>
-                    <ActivityIndicator size="large" color={COLOR.col4} />
+                    <ActivityIndicator size="large" color={COLOR.col3} />
                 </View>
             )}
 
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
     topBar: {
         paddingVertical:10,
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     noCoursesText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     coursesContainer: {
         padding: 10,

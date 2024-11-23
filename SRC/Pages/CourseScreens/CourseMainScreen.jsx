@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     backbtn: {
-        color: COLOR.col4,
+        color: COLOR.col3,
         marginRight: 10,
     },
     content: {
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     title2: {
         fontSize: 12,
@@ -320,11 +320,11 @@ const styles = StyleSheet.create({
     description: {
         marginTop: 10,
         fontSize: 10,
-        color: COLOR.col4,
+        color: COLOR.col3,
         backgroundColor: COLOR.col1,
         padding: 10,
         borderRadius: 5,
-        borderColor: COLOR.col4,
+        borderColor: COLOR.col3,
         borderWidth: 1,
     },
     errorText: {
@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
     price: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: COLOR.col4, // Main price color
+        color: COLOR.col3, // Main price color
         marginRight: 5,
     },
     pricecut: {
@@ -410,7 +410,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         paddingVertical: 8,
         paddingHorizontal: 15,
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         color: '#fff',
         borderRadius: 5,
         marginRight: 10,
@@ -420,7 +420,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         paddingVertical: 8,
         paddingHorizontal: 15,
-        backgroundColor: COLOR.col1,
+        backgroundColor: COLOR.col2,
         color: '#fff',
         borderRadius: 5,
         textAlign: 'center',

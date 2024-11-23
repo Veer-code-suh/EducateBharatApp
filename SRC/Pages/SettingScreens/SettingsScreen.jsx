@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   head1: {
     fontSize: 24,
     fontWeight: '400',
-    color: COLOR.col4,
+    color: COLOR.col3,
     textAlign:'center',
     margin:10
 

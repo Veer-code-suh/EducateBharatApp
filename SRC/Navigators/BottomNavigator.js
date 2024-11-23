@@ -32,7 +32,7 @@ const BottomNavigator = () => {
                     tabBarIcon: ({ focused, color, size }) =>
                     (
                         <View style={focused ? styles.iconContainerF : styles.iconContainer}>
-                            <Octicons name="home" size={20} color={focused ? 'white' : COLOR.col1} />
+                            <Octicons name="home" size={20} color={focused ? 'white' : COLOR.col4} />
                         </View>
                     )
                 }}
@@ -43,7 +43,7 @@ const BottomNavigator = () => {
                     (
 
                         <View style={focused ? styles.iconContainerF : styles.iconContainer}>
-                            <MaterialCommunityIcons name="table-of-contents" size={25} color={focused ? 'white' : COLOR.col1} />
+                            <MaterialCommunityIcons name="table-of-contents" size={25} color={focused ? 'white' : COLOR.col4} />
                         </View>
 
                     )
@@ -56,7 +56,7 @@ const BottomNavigator = () => {
                     (
 
                         <View style={focused ? styles.iconContainerF : styles.iconContainer}>
-                            <AntDesign name="book" size={25} color={focused ? 'white' : COLOR.col1} />
+                            <AntDesign name="book" size={25} color={focused ? 'white' : COLOR.col4} />
                         </View>
 
                     )
@@ -70,7 +70,7 @@ const BottomNavigator = () => {
 
                         <View style={focused ? styles.iconContainerF : styles.iconContainer}>
                             {/* three dot */}
-                            <Feather name="user" size={25} color={focused ? 'white' : COLOR.col1} />
+                            <Feather name="user" size={25} color={focused ? 'white' : COLOR.col4} />
                         </View>
 
                     )

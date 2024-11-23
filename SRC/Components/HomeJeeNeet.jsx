@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     head: {
         fontSize: 18,
         fontWeight: '300',
-        color: COLOR.col4,
+        color: COLOR.col2,
     },
     more: {
         fontSize: 12,
@@ -107,16 +107,16 @@ const styles = StyleSheet.create({
         aspectRatio: 16 / 9,
     },
     t1: {
-        color: COLOR.col4,
+        color: COLOR.col2,
         padding: 10,
         fontSize: 12,
         textAlign: 'center',
     },
     free:{
-        backgroundColor:COLOR.col1,
+        backgroundColor:COLOR.col2,
         width:50,
         textAlign:'center',
         fontSize:12,
-        color:COLOR.col6,
+        color:COLOR.col1,
     },
 });

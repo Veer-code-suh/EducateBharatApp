@@ -158,13 +158,13 @@ const styles = StyleSheet.create({
         backgroundColor: COLOR.col6,
     },
     backbtn: {
-        color: COLOR.col4,
+        color: COLOR.col1,
         marginRight: 10,
     },
     topbarText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: COLOR.col4,
+        color: COLOR.col1,
     },
     loaderContainer: {
         flex: 1,
@@ -183,16 +183,16 @@ const styles = StyleSheet.create({
     tableCellHeader: {
         fontSize: 12,
         flex: 1,
-        color: COLOR.col1, // Adjust for your color scheme
+        color: COLOR.col2, // Adjust for your color scheme
     },
     tableCell: {
         fontSize: 16,
         flex: 2,
-        color: COLOR.col4, // Adjust for your color scheme
+        color: COLOR.col3, // Adjust for your color scheme
     },
 
     startButton: {
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         padding: 15,
         marginHorizontal: 16,
         marginTop: 20,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     quizTakenText1:{
-        color: COLOR.col1,
+        color: COLOR.col2,
         fontSize: 12,
         fontWeight: '400',  
         textAlign:'center',

@@ -98,21 +98,24 @@ const AllTestScoresScreen = ({ navigation }) => {
             </TouchableOpacity>
 
             {/* FlatList for quizzes */}
-            <FlatList
-                data={quizzes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))} // Sort by latest date
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={renderQuizItem}
-                contentContainerStyle={{
-                    paddingHorizontal: 10,
-                    paddingVertical: 20,
-                    paddingBottom: 100, // Add extra padding at the bottom
-                }}
-                ListEmptyComponent={
-                    <Text style={{ textAlign: 'center', color: COLOR.col4, marginTop: 20 }}>
-                        No test scores available.
-                    </Text>
-                }
-            />
+            {
+                quizzes.length > 0 &&
+                <FlatList
+                    data={quizzes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))} // Sort by latest date
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={renderQuizItem}
+                    contentContainerStyle={{
+                        paddingHorizontal: 10,
+                        paddingVertical: 20,
+                        paddingBottom: 100, // Add extra padding at the bottom
+                    }}
+                    ListEmptyComponent={
+                        <Text style={{ textAlign: 'center', color: COLOR.col3, marginTop: 20 }}>
+                            No test scores available.
+                        </Text>
+                    }
+                />
+            }
 
             {/* Date Picker Modal */}
             <DateTimePickerModal
@@ -121,7 +124,7 @@ const AllTestScoresScreen = ({ navigation }) => {
                 date={selectedDate}
                 onConfirm={handleConfirm}
                 onCancel={() => setDatePickerVisibility(false)}
-             
+
             />
 
 
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
     },
     topBar: {
         paddingVertical: 10,
-        backgroundColor: COLOR.col4,
+        backgroundColor: COLOR.col3,
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,
@@ -172,7 +175,7 @@ const styles = StyleSheet.create({
     quizTitle: {
         fontSize: 16,
         fontWeight: '400',
-        color: COLOR.col4,
+        color: COLOR.col3,
         marginBottom: 5,
     },
     quizDetails: {

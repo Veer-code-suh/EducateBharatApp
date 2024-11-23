@@ -15,11 +15,15 @@ const ProductScreen = ({ route }) => {
     const toast = useToast();
     const [quantity, setQuantity] = useState(1);
     const [total, setTotal] = useState(product.productPrice);
-    
-    useEffect(() => { 
+
+    useEffect(() => {
         setTotal(product.productPrice * quantity);
     }, [quantity]);
-
+    const BuyNow = async () => {
+        await clearCart();
+        await AddToCart();
+        navigation.navigate('CartScreen');
+    }
     const AddToCart = async () => {
         const token = await AsyncStorage.getItem("token");
         fetch(BACKEND_URL + "/addToCart", {
@@ -34,14 +38,34 @@ const ProductScreen = ({ route }) => {
                 price: product.productPrice
             })
         })
-        .then(res => res.json())
-        .then(data => {
-            data.error ? Toast.show(data.error, { type: "danger" }) : Toast.show(data.message);
+            .then(res => res.json())
+            .then(data => {
+                data.error ? Toast.show(data.error, { type: "danger" }) : Toast.show(data.message);
+            })
+            .catch(err => {
+                Toast.show("Something went wrong", { type: "danger" });
+                console.log(err);
+            });
+    };
+
+
+    const clearCart = async () => {
+        let token = await AsyncStorage.getItem('token')
+        fetch(BACKEND_URL + "/clearCart", {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
         })
-        .catch(err => {
-            Toast.show("Something went wrong", { type: "danger" });
-            console.log(err);
-        });
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err)
+            })
     };
 
     return (
@@ -70,14 +94,16 @@ const ProductScreen = ({ route }) => {
             <View style={styles.pricebar}>
                 <View style={styles.quantityControls}>
                     <TouchableOpacity onPress={() => quantity > 1 && setQuantity(quantity - 1)}>
-                        <AntDesign name="minuscircleo" size={20} color={COLOR.col4} />
+                        <AntDesign name="minuscircleo" size={20} color={COLOR.col3} />
                     </TouchableOpacity>
                     <Text style={styles.quantity}>{quantity}</Text>
                     <TouchableOpacity onPress={() => setQuantity(quantity + 1)}>
-                        <AntDesign name="pluscircleo" size={20} color={COLOR.col4} />
+                        <AntDesign name="pluscircleo" size={20} color={COLOR.col3} />
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.addToCartButton} onPress={() => AddToCart()}>Add To Cart</Text>
+                <Text style={styles.addToCartButton} onPress={() => BuyNow()}>Buy Now</Text>
+
             </View>
         </View>
     );
@@ -97,7 +123,7 @@ const styles = StyleSheet.create({
         width: windowWidth,
     },
     backbtn: {
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     productImage: {
         width: windowWidth,
@@ -114,13 +140,13 @@ const styles = StyleSheet.create({
     productName: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: COLOR.col4,
+        color: COLOR.col3,
         width: '60%',
     },
     price: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     discountedPrice: {
         fontSize: 14,
@@ -145,7 +171,7 @@ const styles = StyleSheet.create({
     rating: {
         fontSize: 16,
         marginLeft: 5,
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     pricebar: {
         flexDirection: 'row',
@@ -153,12 +179,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 10,
         backgroundColor: COLOR.col3,
+        gap: 10
     },
     quantityControls: {
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: COLOR.col1,
-        paddingVertical: 5,
+        paddingVertical: 10,
+
         paddingHorizontal: 10,
         borderRadius: 5,
     },
@@ -166,15 +194,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         paddingHorizontal: 10,
-        color: COLOR.col4,
+        color: COLOR.col3,
     },
     addToCartButton: {
-        backgroundColor: COLOR.col4,
-        color: '#fff',
+        backgroundColor: COLOR.col1,
+        color: COLOR.col2,
         fontWeight: 'bold',
-        paddingHorizontal: 20,
-        paddingVertical: 10,
+        flex: 1,
         borderRadius: 5,
         overflow: 'hidden',
+        padding: 5,
+        textAlign: 'center',
+        paddingVertical: 10
     },
 });

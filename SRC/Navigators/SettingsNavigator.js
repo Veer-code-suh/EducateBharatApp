@@ -9,6 +9,7 @@ import OrderScreen from '../Pages/SettingScreens/OrderScreen';
 import MyCoursesScreen from '../Pages/SettingScreens/MyCoursesScreen';
 import AllTestScoresScreen from '../Pages/SettingScreens/AllTestScoresScreen';
 import TestScoresScreen from '../Pages/SettingScreens/TestScoresScreen';
+import AboutUs from '../Pages/SettingScreens/AboutUs';
 
 
 const SettingsNavigator = () => {
@@ -29,7 +30,7 @@ const SettingsNavigator = () => {
 
                     },
                     drawerActiveBackgroundColor: COLOR.col2,
-                    drawerActiveTintColor: COLOR.col4,
+                    drawerActiveTintColor: COLOR.col3,
 
                 }
             }>
@@ -39,6 +40,9 @@ const SettingsNavigator = () => {
             <Drawer.Screen name="MyCoursesScreen" component={MyCoursesScreen} />
             <Drawer.Screen name="AllTestScoresScreen" component={AllTestScoresScreen} />
             <Drawer.Screen name="TestScoresScreen" component={TestScoresScreen} />
+
+            <Drawer.Screen name="AboutUsScreen" component={AboutUs} />
+
 
         </Drawer.Navigator>
 
